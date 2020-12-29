@@ -1,0 +1,113 @@
+{
+  "contractName": "LotteryCreator",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.0+commit.9e61f92b\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/max/code/side/defi/lottery/contracts/LotteryCreator.sol\":\"LotteryCreator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/max/code/side/defi/lottery/contracts/LotteryCreator.sol\":{\"keccak256\":\"0xb049fc665d48ee4c1bc16632df2125abaccba181c9f2d956af44da0a33057191\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b7c4b75eba696ebbd5c665cad9c41c84219b753d47b87adc55657a85becfe8e3\",\"dweb:/ipfs/QmShVT19rw9juBCriY3afNy352NwPxzRmsU745XWhJkBmz\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220bc41fd673388bf56a95640182fdb27876b9711d7f2dc973965ad6af053b8a73f64736f6c63430007000033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220bc41fd673388bf56a95640182fdb27876b9711d7f2dc973965ad6af053b8a73f64736f6c63430007000033",
+  "immutableReferences": {},
+  "sourceMap": "57:28:0:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "57:28:0:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.7.0;\n\ncontract LotteryCreator {\n\n}\n",
+  "sourcePath": "/Users/max/code/side/defi/lottery/contracts/LotteryCreator.sol",
+  "ast": {
+    "absolutePath": "/Users/max/code/side/defi/lottery/contracts/LotteryCreator.sol",
+    "exportedSymbols": {
+      "LotteryCreator": [
+        2
+      ]
+    },
+    "id": 3,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2,
+        "linearizedBaseContracts": [
+          2
+        ],
+        "name": "LotteryCreator",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 3,
+        "src": "57:28:0"
+      }
+    ],
+    "src": "32:54:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/max/code/side/defi/lottery/contracts/LotteryCreator.sol",
+    "exportedSymbols": {
+      "LotteryCreator": [
+        2
+      ]
+    },
+    "id": 3,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2,
+        "linearizedBaseContracts": [
+          2
+        ],
+        "name": "LotteryCreator",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 3,
+        "src": "57:28:0"
+      }
+    ],
+    "src": "32:54:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.0+commit.9e61f92b.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2020-12-27T21:11:19.716Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
