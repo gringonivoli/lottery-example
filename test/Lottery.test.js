@@ -18,6 +18,21 @@ contract("Lottery", (accounts) => {
     assert.equal(name, defaultName, "Wrong Name");
   });
 
+  it('should buy a ticket', async () => {
+    const lotteryName = "SorteoONGBitcoin";
+    const lotteryCreatorInstance = await LotteryCreator.deployed();
+    await lotteryCreatorInstance.createLottery(lotteryName, { from: accounts[0] });
+    const lotteryData = await lotteryCreatorInstance.getLottery(lotteryName, { from: accounts[0] });
+    const lotteryAddress = lotteryData.lottery;
+    const lotteryInstance = await Lottery.at(lotteryAddress);
+    await lotteryInstance.activate(1000, { from: accounts[0] });
+    const ticketCost = await lotteryInstance.getTicketCost();
+    
+    await lotteryInstance.buyTicket('Maxi', { from: accounts[1], value: ticketCost });
+
+    assert(true);
+  });
+
   it("should obtain cost of ticket", async () => {
     const lotteryName = "SorteoONGBitcoin";
     const lotteryCreatorInstance = await LotteryCreator.deployed();
