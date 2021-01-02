@@ -12,7 +12,7 @@ contract Lottery {
         uint index;
     }
     mapping (address => Player) players;
-    Player[] playerList;
+    address[] playerList;
     Status currentStatus;
 
     enum Status { inactive, prepared, active, finished }
@@ -44,11 +44,24 @@ contract Lottery {
     function buyTicket(string memory _name) public payable {
         require(currentStatus == Status.prepared || currentStatus == Status.active);
         require(msg.value == ticketCost, 'Wrong Value');
+        // TODO: me parece mas claro verificar el sender que el address(0), pero en 
+        // terminos de performance/costos, todavia no se cual es mas conveniente.
+        require(players[msg.sender].wallet != msg.sender, 'You are already playing');
+        // require(players[msg.sender].wallet == address(0), 'You are already playing');
         Player storage player = players[msg.sender];
-        playerList.push(player);
+        playerList.push(msg.sender);
         player.name = _name;
         player.wallet = msg.sender;
         player.index = playerList.length;
         currentStatus = Status.active;  // TODO: esto se ejecuta siempre y no siempre es necesario... consume mas gas ???
+    }
+
+    function getMyInfo() public view returns (string memory, address, uint) {
+        Player storage player = players[msg.sender];
+        return (player.name, player.wallet, player.index);
+    }
+
+    receive() external payable {
+        buyTicket('unknown');
     }
 }

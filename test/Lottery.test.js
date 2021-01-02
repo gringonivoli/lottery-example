@@ -19,6 +19,9 @@ contract("Lottery", (accounts) => {
   });
 
   it('should buy a ticket', async () => {
+    // TODO: hay que hacer el caso en donde no deje comprar el ticket
+    // pero antes de eso voy a intentar refactorizar el testing para
+    // obtener el contrato creador de un solo lugar.
     const lotteryName = "SorteoONGBitcoin";
     const lotteryCreatorInstance = await LotteryCreator.deployed();
     await lotteryCreatorInstance.createLottery(lotteryName, { from: accounts[0] });
@@ -30,7 +33,40 @@ contract("Lottery", (accounts) => {
     
     await lotteryInstance.buyTicket('Maxi', { from: accounts[1], value: ticketCost });
 
-    assert(true);
+    assert.ok(true);
+  });
+
+  it('should buy a ticket by send eth directly', async () => {
+    const lotteryName = "SorteoONGBitcoin";
+    const lotteryCreatorInstance = await LotteryCreator.deployed();
+    await lotteryCreatorInstance.createLottery(lotteryName, { from: accounts[0] });
+    const lotteryData = await lotteryCreatorInstance.getLottery(lotteryName, { from: accounts[0] });
+    const lotteryAddress = lotteryData.lottery;
+    const lotteryInstance = await Lottery.at(lotteryAddress);
+    await lotteryInstance.activate(1000, { from: accounts[0] });
+    const ticketCost = await lotteryInstance.getTicketCost();
+    
+    await lotteryInstance.sendTransaction({ from: accounts[1], value: ticketCost });
+
+    assert.ok(true);
+  });
+
+  it('should get my info', async () => {
+    const lotteryName = "SorteoONGBitcoin";
+    const lotteryCreatorInstance = await LotteryCreator.deployed();
+    await lotteryCreatorInstance.createLottery(lotteryName, { from: accounts[0] });
+    const lotteryData = await lotteryCreatorInstance.getLottery(lotteryName, { from: accounts[0] });
+    const lotteryAddress = lotteryData.lottery;
+    const lotteryInstance = await Lottery.at(lotteryAddress);
+    await lotteryInstance.activate(1000, { from: accounts[0] });
+    const ticketCost = await lotteryInstance.getTicketCost();
+    await lotteryInstance.buyTicket('Maxi', { from: accounts[1], value: ticketCost });
+
+    const myInfo = await lotteryInstance.getMyInfo({ from: accounts[1] })
+
+    assert.equal('Maxi', myInfo[0])
+    assert.equal(accounts[1], myInfo[1])
+    assert.ok(0 < myInfo[2])
   });
 
   it("should obtain cost of ticket", async () => {
@@ -61,6 +97,28 @@ contract("Lottery", (accounts) => {
       await lotteryInstance.activate(5000, { from: accounts[1] });
     } catch (error) {
         err = error;
+    }
+
+    assert.ok(err instanceof Error);
+  });
+
+  it('should buy only one ticket', async () => {
+    let err = null;
+    const lotteryName = "SorteoONGBitcoin";
+    const lotteryCreatorInstance = await LotteryCreator.deployed();
+    await lotteryCreatorInstance.createLottery(lotteryName, { from: accounts[0] });
+    const lotteryData = await lotteryCreatorInstance.getLottery(lotteryName, { from: accounts[0] });
+    const lotteryAddress = lotteryData.lottery;
+    const lotteryInstance = await Lottery.at(lotteryAddress);
+    await lotteryInstance.activate(1000, { from: accounts[0] });
+    const ticketCost = await lotteryInstance.getTicketCost();
+    
+    await lotteryInstance.buyTicket('Maxi', { from: accounts[1], value: ticketCost });
+
+    try {
+    await lotteryInstance.buyTicket('Maxi', { from: accounts[1], value: ticketCost });
+    } catch (error) {
+      err = error
     }
 
     assert.ok(err instanceof Error);
