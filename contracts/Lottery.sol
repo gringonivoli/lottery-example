@@ -22,7 +22,7 @@ contract Lottery {
         manager = _manager;
     }
 
-    modifier OnlyManager() {
+    modifier onlyManager() {
         require(manager == msg.sender);
         _;
     }
@@ -31,7 +31,7 @@ contract Lottery {
         return name;
     }
 
-    function activate(uint _ticketCost) public OnlyManager {
+    function activate(uint _ticketCost) public onlyManager {
         require(currentStatus == Status.inactive);
         ticketCost = _ticketCost;
         currentStatus = Status.prepared;
@@ -57,7 +57,15 @@ contract Lottery {
     }
 
     function getMyInfo() public view returns (string memory, address, uint) {
-        Player storage player = players[msg.sender];
+        return _getPlayerInfo(msg.sender);
+    }
+
+    function getPlayerInfo(address playerAddress) public view onlyManager returns (string memory, address, uint)  {
+        return _getPlayerInfo(playerAddress);
+    }
+
+    function _getPlayerInfo(address playerAddress) private view returns (string memory, address, uint) {
+        Player storage player = players[playerAddress];
         return (player.name, player.wallet, player.index);
     }
 
