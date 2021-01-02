@@ -160,4 +160,42 @@ contract("Lottery", (accounts) => {
 
     assert.ok(err instanceof Error);
   });
+
+  it("should allow pick a winner", async () => {
+    const lotteryName = "SorteoONGBitcoin";
+    const lotteryCreatorInstance = await LotteryCreator.deployed();
+    await lotteryCreatorInstance.createLottery(lotteryName, { from: accounts[0] });
+    const lotteryData = await lotteryCreatorInstance.getLottery(lotteryName, { from: accounts[0] });
+    const lotteryAddress = lotteryData.lottery;
+    const lotteryInstance = await Lottery.at(lotteryAddress);
+    await lotteryInstance.activate(1000, { from: accounts[0] });
+    const ticketCost = await lotteryInstance.getTicketCost();
+    await lotteryInstance.buyTicket('Maxi', { from: accounts[1], value: ticketCost });
+
+    await lotteryInstance.pickWinner({ from: accounts[0] });
+
+    assert.ok(true);
+  });
+
+  it("should allow pick a winner only owners", async () => {
+    const lotteryName = "SorteoONGBitcoin";
+    const lotteryCreatorInstance = await LotteryCreator.deployed();
+    await lotteryCreatorInstance.createLottery(lotteryName, { from: accounts[0] });
+    const lotteryData = await lotteryCreatorInstance.getLottery(lotteryName, { from: accounts[0] });
+    const lotteryAddress = lotteryData.lottery;
+    const lotteryInstance = await Lottery.at(lotteryAddress);
+    await lotteryInstance.activate(1000, { from: accounts[0] });
+    const ticketCost = await lotteryInstance.getTicketCost();
+    await lotteryInstance.buyTicket('Maxi', { from: accounts[1], value: ticketCost });
+    let err = null;
+
+    try {
+      await lotteryInstance.pickWinner({ from: accounts[1] });
+    } catch (error) {
+        err = error;
+    }
+
+    assert.ok(err instanceof Error);
+  });
+
 });

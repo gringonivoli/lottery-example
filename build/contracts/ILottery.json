@@ -1,0 +1,697 @@
+{
+  "contractName": "ILottery",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getName",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_ticketCost",
+          "type": "uint256"
+        }
+      ],
+      "name": "activate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTicketCost",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        }
+      ],
+      "name": "buyTicket",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pickWinner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.0+commit.9e61f92b\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_ticketCost\",\"type\":\"uint256\"}],\"name\":\"activate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"buyTicket\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getName\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTicketCost\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pickWinner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/max/code/side/defi/lottery/contracts/ILottery.sol\":\"ILottery\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/max/code/side/defi/lottery/contracts/ILottery.sol\":{\"keccak256\":\"0x156d311ca79ebca5419dd86578205bedbf1ae325c1432779288346a2bb52f5ef\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://dfbd3aff5f4ee62e03bb8b0a1ab645d7bf544c080b4a0ba01a81c79e7e0ffbb8\",\"dweb:/ipfs/QmNwTZjGt3exC6dLDWYarQfAC2mqj8pKFuhZtoW7zGArry\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.7.0;\n\ninterface ILottery {\n\n    function getName() external view returns (string memory);\n\n    function activate(uint _ticketCost) external;\n\n    function getTicketCost() external view returns (uint);\n\n    function buyTicket(string memory _name) external payable;\n\n    function pickWinner() external;\n}\n",
+  "sourcePath": "/Users/max/code/side/defi/lottery/contracts/ILottery.sol",
+  "ast": {
+    "absolutePath": "/Users/max/code/side/defi/lottery/contracts/ILottery.sol",
+    "exportedSymbols": {
+      "ILottery": [
+        25
+      ]
+    },
+    "id": 26,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 25,
+        "linearizedBaseContracts": [
+          25
+        ],
+        "name": "ILottery",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "17d7de7c",
+            "id": 6,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getName",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "99:2:0"
+            },
+            "returnParameters": {
+              "id": 5,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 6,
+                  "src": "125:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "125:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "124:15:0"
+            },
+            "scope": 25,
+            "src": "83:57:0",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "b260c42a",
+            "id": 11,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "activate",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 9,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8,
+                  "mutability": "mutable",
+                  "name": "_ticketCost",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 11,
+                  "src": "164:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "164:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "163:18:0"
+            },
+            "returnParameters": {
+              "id": 10,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "190:0:0"
+            },
+            "scope": 25,
+            "src": "146:45:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "3a31a76b",
+            "id": 16,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTicketCost",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 12,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "219:2:0"
+            },
+            "returnParameters": {
+              "id": 15,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 16,
+                  "src": "245:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "245:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "244:6:0"
+            },
+            "scope": 25,
+            "src": "197:54:0",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "fa30b251",
+            "id": 21,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "buyTicket",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 19,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 18,
+                  "mutability": "mutable",
+                  "name": "_name",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 21,
+                  "src": "276:19:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 17,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "276:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "275:21:0"
+            },
+            "returnParameters": {
+              "id": 20,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "313:0:0"
+            },
+            "scope": 25,
+            "src": "257:57:0",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "5d495aea",
+            "id": 24,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pickWinner",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 22,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "339:2:0"
+            },
+            "returnParameters": {
+              "id": 23,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "350:0:0"
+            },
+            "scope": 25,
+            "src": "320:31:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 26,
+        "src": "57:296:0"
+      }
+    ],
+    "src": "32:322:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/max/code/side/defi/lottery/contracts/ILottery.sol",
+    "exportedSymbols": {
+      "ILottery": [
+        25
+      ]
+    },
+    "id": 26,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 25,
+        "linearizedBaseContracts": [
+          25
+        ],
+        "name": "ILottery",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "17d7de7c",
+            "id": 6,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getName",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "99:2:0"
+            },
+            "returnParameters": {
+              "id": 5,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 6,
+                  "src": "125:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "125:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "124:15:0"
+            },
+            "scope": 25,
+            "src": "83:57:0",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "b260c42a",
+            "id": 11,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "activate",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 9,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8,
+                  "mutability": "mutable",
+                  "name": "_ticketCost",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 11,
+                  "src": "164:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "164:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "163:18:0"
+            },
+            "returnParameters": {
+              "id": 10,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "190:0:0"
+            },
+            "scope": 25,
+            "src": "146:45:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "3a31a76b",
+            "id": 16,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTicketCost",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 12,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "219:2:0"
+            },
+            "returnParameters": {
+              "id": 15,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 16,
+                  "src": "245:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "245:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "244:6:0"
+            },
+            "scope": 25,
+            "src": "197:54:0",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "fa30b251",
+            "id": 21,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "buyTicket",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 19,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 18,
+                  "mutability": "mutable",
+                  "name": "_name",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 21,
+                  "src": "276:19:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 17,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "276:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "275:21:0"
+            },
+            "returnParameters": {
+              "id": 20,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "313:0:0"
+            },
+            "scope": 25,
+            "src": "257:57:0",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "5d495aea",
+            "id": 24,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pickWinner",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 22,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "339:2:0"
+            },
+            "returnParameters": {
+              "id": 23,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "350:0:0"
+            },
+            "scope": 25,
+            "src": "320:31:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 26,
+        "src": "57:296:0"
+      }
+    ],
+    "src": "32:322:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.0+commit.9e61f92b.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2021-01-02T18:41:37.296Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

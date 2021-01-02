@@ -1,19 +1,27 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 
-contract Lottery {
+
+import { ILottery } from './ILottery.sol';
+
+
+contract Lottery is ILottery {
 
     string name;
     uint ticketCost;
     address manager;
     struct Player {
         string name;
-        address wallet;
+        address payable wallet;
         uint index;
     }
     mapping (address => Player) players;
     address[] playerList;
     Status currentStatus;
+    Player winner;
+
+    event NewPlayer(string playerName);
+    event LotteryFinished(address winner);
 
     enum Status { inactive, prepared, active, finished }
 
@@ -27,21 +35,21 @@ contract Lottery {
         _;
     }
 
-    function getName() public view returns (string memory) {
+    function getName() override public view returns (string memory) {
         return name;
     }
 
-    function activate(uint _ticketCost) public onlyManager {
+    function activate(uint _ticketCost) override public onlyManager {
         require(currentStatus == Status.inactive);
         ticketCost = _ticketCost;
         currentStatus = Status.prepared;
     }
 
-    function getTicketCost() public view returns (uint) {
+    function getTicketCost() override public view returns (uint) {
         return ticketCost;
     }
 
-    function buyTicket(string memory _name) public payable {
+    function buyTicket(string memory _name) override public payable {
         require(currentStatus == Status.prepared || currentStatus == Status.active);
         require(msg.value == ticketCost, 'Wrong Value');
         // TODO: me parece mas claro verificar el sender que el address(0), pero en 
@@ -54,6 +62,7 @@ contract Lottery {
         player.wallet = msg.sender;
         player.index = playerList.length;
         currentStatus = Status.active;  // TODO: esto se ejecuta siempre y no siempre es necesario... consume mas gas ???
+        emit NewPlayer(_name);  // TODO: test event
     }
 
     function getMyInfo() public view returns (string memory, address, uint) {
@@ -71,5 +80,22 @@ contract Lottery {
 
     receive() external payable {
         buyTicket('unknown');
+    }
+
+    function generateRandomNumber() private view returns (uint) {
+        // TODO: not recommended for production
+        return uint(keccak256(abi.encodePacked(
+            block.timestamp,
+            block.difficulty,
+            msg.sender
+        )));
+    }
+
+    function pickWinner() override external onlyManager {
+        uint winnerIndex = generateRandomNumber() % playerList.length;
+        winner = players[playerList[winnerIndex]];
+        winner.wallet.transfer(address(this).balance);  // TODO: test transfer
+        currentStatus = Status.finished;
+        emit LotteryFinished(winner.wallet);  // TODO: test event
     }
 }
